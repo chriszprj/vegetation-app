@@ -1,10 +1,23 @@
-A Python Streamlit web application that helps users explore and understand vegetation changes in a selected location using NDVI (Normalized Difference Vegetation Index) data.
+This Python-based vegetation recovery tracker app uses satellite imagery to analyze vegetation changes in a selected wildfire-affected area.
 
-Features of the Application:
-1.	Location Selection — Select an area to analyze vegetation conditions.
-2.	5-Year NDVI Analysis — View NDVI values and vegetation levels over the most recent five years.
-3.	Interactive Visualizations — Explore vegetation trends and changes through interactive charts.
-4.	Vegetation Change Tracking — Compare NDVI across years to identify increases or decreases in vegetation.
-5.	Trend Interpretation — Provides a simple interpretation of vegetation changes in the selected area.
+Users can search for and select any recent fire (preferably from 2015 onward) to analyze. This application locates the fire's geographic perimeter, retrieves satellite imagery for the surrounding area, and analyzes vegetation conditions across multiple years before (up to 2 years preceding) and after (up to 10 years afterward) the fire.
 
-Technologies: Python, Streamlit, NDVI/satellite imagery data, Data visualization and analysis libraries
+Features:
+1. Wildfire Search: Users can search for wildfire events and select a specific fire to analyze.
+2. Fire Perimeter Mapping: The application will display the selected wildfire's geographic perimeter and area on an interactive map.
+3. Multi-Year Satellite Analysis: Retrieves satellite imagery from two years before the fire through up to ten years after it, depending on available data.
+4. NDVI Analysis: Calculates vegetation condition based on satellite imagery for each available year and tracks changes over time.
+5. NBR and Burn Severity Analysis: Uses NBR and dNBR to estimate how strongly the landscape was affected by the fire.
+6. Interactive Results: Presents the analysis through maps, tables, charts, and summary statistics so changes can be examined visually.
+
+Technologies:
+The application uses NASA Earthdata as its source for satellite imagery and the earthaccess Python library to search for and access the data programmatically.
+
+From NASA Earthdata, we utilize its Harmonized Landsat and Sentinel-2 (HLS) project, which gathers information from two satellite teams: Landsat 8/Landsat 9 and Sentinel-2A/2B/2C. These databases provide key spectral bands for visible light/thermal infrared/red edge bands that this application analyzes.
+
+Analysis is done through several processes:
+1) Calculating NDVI (normalized-difference-vegetation-index): NDVI uses red and near-infrared reflectance to estimate vegetation condition, with higher values generally representing healthier or denser vegetation. The application calculates yearly NDVI within the fire perimeter to track vegetation changes before and after the wildfire.
+Calculating NBR (Normalized Burn Ratio): NBR uses near-infrared and shortwave-infrared reflectance to highlight changes associated with burned areas. The application uses NBR to compare surface conditions before and after the fire.
+Calculating dNBR (Differenced Normalized Burn Ratio): dNBR measures the difference between pre-fire and post-fire NBR values, estimating how much the landscape changed because of the fire. The application uses this value to classify burn severity.
+Tracking Recovery: Yearly NDVI values are compared across the pre-fire and post-fire periods to show how vegetation conditions change and recover over time.
+Spatial Analysis: Satellite pixels are filtered to the selected fire perimeter so that the calculations focus specifically on the area affected by the wildfire.
