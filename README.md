@@ -17,7 +17,5 @@ From NASA Earthdata, we utilize its Harmonized Landsat and Sentinel-2 (HLS) proj
 
 Analysis is done through several processes:
 1) Calculating NDVI (normalized-difference-vegetation-index): NDVI uses red and near-infrared reflectance to estimate vegetation condition, with higher values generally representing healthier or denser vegetation. The application calculates yearly NDVI within the fire perimeter to track vegetation changes before and after the wildfire.
-Calculating NBR (Normalized Burn Ratio): NBR uses near-infrared and shortwave-infrared reflectance to highlight changes associated with burned areas. The application uses NBR to compare surface conditions before and after the fire.
-Calculating dNBR (Differenced Normalized Burn Ratio): dNBR measures the difference between pre-fire and post-fire NBR values, estimating how much the landscape changed because of the fire. The application uses this value to classify burn severity.
-Tracking Recovery: Yearly NDVI values are compared across the pre-fire and post-fire periods to show how vegetation conditions change and recover over time.
-Spatial Analysis: Satellite pixels are filtered to the selected fire perimeter so that the calculations focus specifically on the area affected by the wildfire.
+2) Calculating NBR (Normalized Burn Ratio): NBR uses near-infrared and shortwave-infrared reflectance to highlight changes associated with burned areas. The application uses NBR to compare surface conditions before and after the fire.
+3) Calculating dNBR (Differenced Normalized Burn Ratio): dNBR measures the difference between pre-fire and post-fire NBR values, estimating how much the landscape changed because of the fire. The application uses this value to classify burn severity.
